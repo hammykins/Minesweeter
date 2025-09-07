@@ -94,14 +94,15 @@ document.getElementById('picture-toggle').addEventListener('click', () => {
   const btn = document.getElementById('picture-toggle');
   if (pictureRevealEnabled) {
     disablePictureReveal();
-    btn.textContent = '🎨 Picture Mode';
+    btn.textContent = '🎨 Show Picture';
     btn.style.background = '#e1f5fe';
   } else {
     enablePictureReveal();
-    btn.textContent = '🎮 Normal Mode';
+    btn.textContent = '🙈 Hide Picture';
     btn.style.background = '#c8e6c9';
   }
-  restartGame();
+  // Just re-render without restarting the game
+  renderBoard(window.board);
 });
 
 function createBoard(mineSafeIdx = null) {
@@ -217,30 +218,32 @@ function renderBoard(board) {
       if (cell.revealed) {
         div.classList.add('revealed');
         if (cell.mine) {
-          if (!pictureRevealEnabled) {
-            div.textContent = '🎁'; // pastel present
-          }
+          div.textContent = '🎁'; // pastel present - always show
         } else {
-          if (!pictureRevealEnabled) {
-            div.textContent = cell.type;
-            if (cell.type) {
-              div.title = `${cell.adj} adjacent mine${cell.adj > 1 ? 's' : ''}`;
-            }
-            if (cell.type === '🍬') div.classList.add('candy');
-            if (cell.type === '🧁') div.classList.add('cupcake');
-            if (cell.type === '🍦') div.classList.add('icecream');
+          div.textContent = cell.type;
+          if (cell.type) {
+            div.title = `${cell.adj} adjacent mine${cell.adj > 1 ? 's' : ''}`;
           }
+          if (cell.type === '🍬') div.classList.add('candy');
+          if (cell.type === '🧁') div.classList.add('cupcake');
+          if (cell.type === '🍦') div.classList.add('icecream');
         }
       } else if (cell.flagged) {
-        if (!pictureRevealEnabled) {
-          div.textContent = '🚩';
-        }
+        div.textContent = '🚩'; // always show flags
         div.classList.add('flagged');
       } else {
-        if (!pictureRevealEnabled) {
-          div.textContent = '';
-        }
+        div.textContent = '';
         div.classList.add('unrevealed');
+      }
+      
+      // Wrap content in a div for proper layering in picture mode
+      if (pictureRevealEnabled && currentPixelArt) {
+        const content = div.textContent;
+        div.textContent = '';
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'cell-content';
+        contentDiv.textContent = content;
+        div.appendChild(contentDiv);
       }
     }
     gameBoard.appendChild(div);

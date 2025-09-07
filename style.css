@@ -129,7 +129,21 @@ h1 {
 }
 
 .cell.picture-mode {
-  background-color: transparent;
+  /* Picture is background layer, game icons stay on top */
+  position: relative;
+}
+
+.cell.picture-mode .cell-content {
+  position: relative;
+  z-index: 3;
+  /* Strong text shadow for visibility on any background color */
+  color: #2d1a0a;
+  text-shadow: 
+    2px 2px 4px rgba(255, 255, 255, 1),
+    -2px -2px 4px rgba(255, 255, 255, 1),
+    2px -2px 4px rgba(255, 255, 255, 1),
+    -2px 2px 4px rgba(255, 255, 255, 1);
+  font-weight: bold;
 }
 
 .cell.picture-mode.no-pixel {
