@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minesweeter - Kawaii Candy Theme</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Minesweeter 💗</h1>
+  <div style="margin: 20px 0;">
+    <label for="difficulty-select" style="font-size:1.1em;color:#ff69b4;">Difficulty:</label>
+    <select id="difficulty-select" style="font-size:1.1em;padding:4px 12px;border-radius:8px;border:1px solid #ffb6c1;">
+      <option value="beginner">Beginner (9x9, 10 mines)</option>
+      <option value="intermediate">Intermediate (16x16, 40 mines)</option>
+      <option value="advanced">Advanced (24x24, 99 mines)</option>
+    </select>
+    <span id="fastest-time" style="margin-left:24px;font-size:1em;color:#b2ebf2;"></span>
+  </div>
+  <div id="top-bar" style="display:flex;justify-content:center;align-items:center;gap:32px;margin-bottom:16px;">
+    <span id="mine-counter" style="font-size:1.3em;background:#fff8dc;padding:6px 18px;border-radius:8px;border:1px solid #ffb6c1;color:#ff69b4;box-shadow:0 2px 8px rgba(255,182,193,0.10);">Mines: 00</span>
+    <button id="reset-btn" style="font-size:1.5em;background:#fff8dc;border-radius:50%;border:2px solid #ffb6c1;padding:6px 16px;box-shadow:0 2px 8px rgba(255,182,193,0.10);cursor:pointer;">😊</button>
+    <span id="timer" style="font-size:1.3em;background:#fff8dc;padding:6px 18px;border-radius:8px;border:1px solid #ffb6c1;color:#ff69b4;box-shadow:0 2px 8px rgba(255,182,193,0.10);">Time: 0</span>
+  </div>
+  <div id="controls" style="display:flex;gap:16px;justify-content:center;align-items:center;margin-bottom:16px;">
+  <button id="leaderboard-btn" style="padding:8px 18px;font-size:1.1em;border-radius:8px;background:#ffe4ec;color:#ff69b4;border:1px solid #ffb6c1;cursor:pointer;">Leaderboard</button>
+  <button id="rules-btn" style="padding:8px 18px;font-size:1.1em;border-radius:8px;background:#fff8dc;color:#ff69b4;border:1px solid #ffb6c1;cursor:pointer;">Rules</button>
+  </div>
+  <div id="main-flex" style="display:flex; flex-direction:row; justify-content:center; align-items:flex-start; min-height:600px; background:#fff8dc; border-radius:20px; margin:0 auto; width:100vw; max-width:100vw; box-sizing:border-box; padding:8px 0;">
+    <div id="legend" style="margin-left:120px; margin-right:64px; align-self:flex-start;">
+      <ul style="list-style:none; padding:0; font-size:1.2em; text-align:left; display:inline-block; min-width: 340px;">
+        <li style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+          <span class="icon" style="width:40px;display:inline-flex;justify-content:center;align-items:center;">🍬</span>
+          <span style="display:inline-block; min-width:120px; text-align:left;">Candy</span>
+          <span>(1 adjacent mine)</span>
+        </li>
+        <li style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+          <span class="icon" style="width:40px;display:inline-flex;justify-content:center;align-items:center;">🧁</span>
+          <span style="display:inline-block; min-width:120px; text-align:left;">Cupcake</span>
+          <span>(2 adjacent mines)</span>
+        </li>
+        <li style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+          <span class="icon" style="width:40px;display:inline-flex;justify-content:center;align-items:center;">🍦</span>
+          <span style="display:inline-block; min-width:120px; text-align:left;">Ice Cream</span>
+          <span>(3+ adjacent mines)</span>
+        </li>
+        <li style="display:flex;align-items:center;gap:10px;">
+          <span class="icon" style="width:40px;display:inline-flex;justify-content:center;align-items:center;">🎁</span>
+          <span style="display:inline-block; min-width:120px; text-align:left;">Mine</span>
+        </li>
+      </ul>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center;">
+      <div id="game-over" style="display:none;"></div>
+      <!-- Accessible modal for instructions -->
+      <div id="modal-backdrop" class="modal-backdrop" style="display:none;">
+        <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+          <div class="modal-inner" style="max-width:420px;padding:16px;background:#fffef6;border-radius:12px;border:1px solid #ffeedd;box-shadow:0 8px 26px rgba(0,0,0,0.08);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <h2 id="modal-title" style="color:#ff69b4;margin:0;font-size:1.1em;">How to play</h2>
+              <button id="close-instructions" aria-label="Close instructions" class="modal-close" style="background:transparent;border:none;color:#ff69b4;font-weight:bold;cursor:pointer;font-size:1.1em;">✕</button>
+            </div>
+            <ol style="padding-left:18px;margin:8px 0;color:#6b6b6b;font-size:0.95em;">
+              <li>Left-click a cell to reveal it. Numbers show adjacent mines.</li>
+              <li>Right-click a cell to place or remove a flag (useful for marking suspected mines).</li>
+              <li>The first click is always safe — mines are placed after your first reveal.</li>
+              <li>Your goal: reveal all non-mine cells. Reveal the last safe cell to win.</li>
+              <li>The mine counter shows remaining mines (total mines minus flags).</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <!-- Leaderboard modal (replaces inline leaderboard) -->
+      <div id="lb-backdrop" class="modal-backdrop" style="display:none;">
+        <div id="lb-modal" role="dialog" aria-modal="true" aria-labelledby="lb-title" tabindex="-1">
+          <div class="modal-inner" style="max-width:420px;padding:16px;background:#fffef6;border-radius:12px;border:1px solid #ffeedd;box-shadow:0 8px 26px rgba(0,0,0,0.08);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <h2 id="lb-title" style="color:#ff69b4;margin:0;font-size:1.1em;">Leaderboard</h2>
+              <button id="close-leaderboard" aria-label="Close leaderboard" class="modal-close" style="background:transparent;border:none;color:#ff69b4;font-weight:bold;cursor:pointer;font-size:1.1em;">✕</button>
+            </div>
+            <table id="leaderboard-table" style="width:100%;font-size:1.1em;color:#ff69b4;text-align:left;border-collapse:collapse;">
+              <thead><tr><th>Name</th><th>Time</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="confetti-container" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2000;"></div>
+      <div id="game-board"></div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
