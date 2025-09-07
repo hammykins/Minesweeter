@@ -15,7 +15,7 @@ let leaderboardData = [];
 
 // For quick testing: when true the page will load with all safe cells revealed except one.
 // Toggle this to false or remove before finalizing.
-const AUTO_FILL_FOR_TESTING = true;
+const AUTO_FILL_FOR_TESTING = false;
 
 // Dev/test helpers removed for finalization
 
@@ -89,6 +89,21 @@ document.getElementById('leaderboard-btn').addEventListener('click', () => {
 document.getElementById('close-leaderboard').addEventListener('click', () => closeLeaderboard());
 document.getElementById('lb-backdrop').addEventListener('click', (e) => { if (e.target.id === 'lb-backdrop') closeLeaderboard(); });
 
+// Picture reveal toggle
+document.getElementById('picture-toggle').addEventListener('click', () => {
+  const btn = document.getElementById('picture-toggle');
+  if (pictureRevealEnabled) {
+    disablePictureReveal();
+    btn.textContent = '🎨 Picture Mode';
+    btn.style.background = '#e1f5fe';
+  } else {
+    enablePictureReveal();
+    btn.textContent = '🎮 Normal Mode';
+    btn.style.background = '#c8e6c9';
+  }
+  restartGame();
+});
+
 function createBoard(mineSafeIdx = null) {
   const { size, mines } = DIFFICULTY_SETTINGS[difficulty];
   boardSize = size;
@@ -153,6 +168,26 @@ function renderBoard(board) {
   board.forEach((cell, idx) => {
     const div = document.createElement('div');
     div.className = 'cell';
+    
+    // Picture reveal setup
+    if (pictureRevealEnabled && currentPixelArt) {
+      const row = Math.floor(idx / boardSize);
+      const col = idx % boardSize;
+      const pixelColor = getPixelColor(row, col);
+      
+      div.classList.add('picture-mode');
+      if (pixelColor) {
+        div.style.backgroundColor = pixelColor;
+      } else {
+        div.classList.add('no-pixel');
+      }
+      
+      // Add cover div for picture reveal
+      const cover = document.createElement('div');
+      cover.className = 'pixel-cover';
+      div.appendChild(cover);
+    }
+    
     if (!cell.active) {
       div.style.visibility = 'hidden';
       div.style.pointerEvents = 'none';
@@ -182,21 +217,29 @@ function renderBoard(board) {
       if (cell.revealed) {
         div.classList.add('revealed');
         if (cell.mine) {
-          div.textContent = '🎁'; // pastel present
-        } else {
-          div.textContent = cell.type;
-          if (cell.type) {
-            div.title = `${cell.adj} adjacent mine${cell.adj > 1 ? 's' : ''}`;
+          if (!pictureRevealEnabled) {
+            div.textContent = '🎁'; // pastel present
           }
-          if (cell.type === '🍬') div.classList.add('candy');
-          if (cell.type === '🧁') div.classList.add('cupcake');
-          if (cell.type === '🍦') div.classList.add('icecream');
+        } else {
+          if (!pictureRevealEnabled) {
+            div.textContent = cell.type;
+            if (cell.type) {
+              div.title = `${cell.adj} adjacent mine${cell.adj > 1 ? 's' : ''}`;
+            }
+            if (cell.type === '🍬') div.classList.add('candy');
+            if (cell.type === '🧁') div.classList.add('cupcake');
+            if (cell.type === '🍦') div.classList.add('icecream');
+          }
         }
       } else if (cell.flagged) {
-        div.textContent = '🚩';
+        if (!pictureRevealEnabled) {
+          div.textContent = '🚩';
+        }
         div.classList.add('flagged');
       } else {
-        div.textContent = '';
+        if (!pictureRevealEnabled) {
+          div.textContent = '';
+        }
         div.classList.add('unrevealed');
       }
     }
@@ -530,3 +573,6 @@ window.onload = () => {
   window.board = createBoard();
   renderBoard(window.board);
 };
+
+// Initialize the game
+loadLeaderboard();

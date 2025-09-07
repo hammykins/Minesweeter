@@ -109,6 +109,31 @@ h1 {
   justify-content: center;
   font-size: 2em;
   transition: background 0.2s, border 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Picture reveal styles */
+.cell .pixel-cover {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 228, 236, 0.95);
+  border-radius: 6px;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.cell.revealed .pixel-cover {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cell.picture-mode {
+  background-color: transparent;
+}
+
+.cell.picture-mode.no-pixel {
+  background: #ffe4ec;
 }
 
 .unrevealed {
