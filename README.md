@@ -2,7 +2,7 @@
 
 A web-based Minesweeper variant with a cute, candy-inspired theme featuring pastel colors and sweet emoji icons.
 
-![Minesweeter Gameplay](screenshots/interface.png)
+![Minesweeter Gameplay](screenshots/interface.PNG)
 *Main game interface showing the kawaii candy theme with game legend and active gameplay*
 
 ## Features
@@ -16,7 +16,7 @@ A web-based Minesweeper variant with a cute, candy-inspired theme featuring past
 ## Screenshots
 
 ### Gameplay
-![Minesweeter Gameplay](screenshots/interface.png)
+![Minesweeter Gameplay](screenshots/interface.PNG)
 *Main interface showing the sweet candy theme with mine counter, timer, and game legend*
 
 ### Victory Screen
