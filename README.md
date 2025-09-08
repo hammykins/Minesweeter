@@ -26,6 +26,21 @@ A web-based Minesweeper variant with a cute, candy-inspired theme featuring past
 ## How to Run
 Just open `index.html` in your browser.
 
+## Future Development Plans
+
+### Picture Reveal Feature 🎨
+Currently in development on the `feature/picture-reveal` branch:
+- **Pixel Art Integration**: Each difficulty level will have a unique pixel art design that reveals as you uncover cells
+- **Toggle Functionality**: Players can show/hide the background picture while maintaining normal gameplay
+- **Progressive Reveal**: Picture elements only appear where cells have been successfully revealed
+- **Custom Artwork**: Heart (9x9), fruit designs (16x16), and detailed illustrations (24x24)
+
+This feature will add a Picross-like element where completing the Minesweeper puzzle also reveals a beautiful pixel art image!
+
+## Development Branches
+- **`main`**: Stable release with core Minesweeper functionality
+- **`feature/picture-reveal`**: Active development of picture reveal system
+
 ## Assets
 All images/icons are placeholders. Replace them with your own for production use.
 
