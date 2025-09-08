@@ -23,56 +23,87 @@ const PIXEL_ART = {
   intermediate: {
     cols: 16,
     rows: 16,
-    name: "Cupcake",
+    name: "Cherries",
     pixels: [
-      [null,null,null,null,null,null,'#fff3e6','#fff3e6','#fff3e6','#fff3e6',null,null,null,null,null,null],
-      [null,null,null,null,null,'#fff3e6','#ffd6e6','#ffd6e6','#ffd6e6','#ffd6e6','#fff3e6',null,null,null,null,null],
-      [null,null,null,null,'#fff3e6','#ffd6e6','#ff9fcf','#ff9fcf','#ff9fcf','#ff9fcf','#ffd6e6','#fff3e6',null,null,null,null],
-      [null,null,null,'#fff3e6','#ffd6e6','#ff9fcf','#ff4da6','#ff4da6','#ff4da6','#ff4da6','#ff9fcf','#ffd6e6','#fff3e6',null,null,null],
-      [null,null,'#fff3e6','#ffd6e6','#ff9fcf','#ff4da6','#cc0066','#cc0066','#cc0066','#cc0066','#ff4da6','#ff9fcf','#ffd6e6','#fff3e6',null,null],
-      [null,'#fff3e6','#ffd6e6','#ff9fcf','#ff4da6','#cc0066','#990040','#990040','#990040','#990040','#cc0066','#ff4da6','#ff9fcf','#ffd6e6','#fff3e6',null],
-      [null,'#fff3e6','#ffd6e6','#ff9fcf','#ff4da6','#cc0066','#990040','#990040','#990040','#990040','#cc0066','#ff4da6','#ff9fcf','#ffd6e6','#fff3e6',null],
-      [null,null,'#fff3e6','#ffd6e6','#ff9fcf','#ff4da6','#cc0066','#cc0066','#cc0066','#cc0066','#ff4da6','#ff9fcf','#ffd6e6','#fff3e6',null,null],
-      [null,null,null,'#fff3e6','#ffd6e6','#ff9fcf','#ff4da6','#ff4da6','#ff4da6','#ff4da6','#ff9fcf','#ffd6e6','#fff3e6',null,null,null],
-      [null,null,null,null,'#fff3e6','#ffd6e6','#ff9fcf','#ff9fcf','#ff9fcf','#ff9fcf','#ffd6e6','#fff3e6',null,null,null,null],
-      [null,null,null,null,null,'#b5651d','#b5651d','#b5651d','#b5651d','#b5651d','#b5651d',null,null,null,null,null],
-      [null,null,null,null,'#b5651d','#8b5a2b','#8b5a2b','#8b5a2b','#8b5a2b','#8b5a2b','#8b5a2b','#b5651d',null,null,null,null],
-      [null,null,null,'#b5651d','#8b5a2b','#654321','#654321','#654321','#654321','#654321','#654321','#8b5a2b','#b5651d',null,null,null],
-      [null,null,'#b5651d','#8b5a2b','#654321','#4a3018','#4a3018','#4a3018','#4a3018','#4a3018','#4a3018','#654321','#8b5a2b','#b5651d',null,null],
-      [null,'#b5651d','#8b5a2b','#654321','#4a3018','#2d1a0a','#2d1a0a','#2d1a0a','#2d1a0a','#2d1a0a','#2d1a0a','#4a3018','#654321','#8b5a2b','#b5651d',null],
-      ['#b5651d','#8b5a2b','#654321','#4a3018','#2d1a0a','#1a0f05','#1a0f05','#1a0f05','#1a0f05','#1a0f05','#1a0f05','#2d1a0a','#4a3018','#654321','#8b5a2b','#b5651d']
+      // Row 1 (y=1)
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      // Row 2 (y=2)
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      // Row 3 (y=3)
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      // Row 4 (y=4) - Stem join and start
+      [null,null,null,null,null,null,null,'#000000',null,'#000000',null,null,null,null,null,null],
+      // Row 5 (y=5) - Stems
+      [null,null,null,null,null,null,null,'#1E4E00','#3A8A00','#3A8A00',null,'#3A8A00',null,null,null,null],
+      // Row 6 (y=6) - Cherry tops and stems
+      [null,null,null,null,'#9E1B1B','#C72424',null,'#000000','#1E4E00','#3A8A00',null,null,null,null,null,null],
+      // Row 7 (y=7) - Upper cherries
+      [null,null,null,'#9E1B1B','#C72424','#C72424','#C72424','#9E1B1B','#000000',null,null,'#9E1B1B','#1E4E00','#9E1B1B',null,null],
+      // Row 8 (y=8) - Main cherry bodies
+      [null,null,'#9E1B1B','#C72424','#FFFFFF','#C72424',null,'#9E1B1B',null,'#C72424','#C72424',null,'#C72424','#9E1B1B','#9E1B1B',null],
+      // Row 9 (y=9) - Lower cherries
+      [null,null,null,null,null,null,null,null,null,'#C72424','#9E1B1B','#C72424',null,'#C72424','#9E1B1B',null],
+      // Row 10 (y=10) - Cherry bottoms
+      [null,null,null,null,null,null,null,null,null,'#9E1B1B','#FFFFFF',null,'#C72424',null,null,null],
+      // Row 11 (y=11)
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      // Row 12 (y=12)
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      // Row 13 (y=13)
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      // Row 14 (y=14)
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      // Row 15 (y=15)
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      // Row 16 (y=16)
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
     ]
   },
 
   advanced: {
     cols: 24,
     rows: 24,
-    name: "Ice Cream",
+    name: "Double Scoop Ice Cream",
     pixels: [
-      // A simplified 24x24 ice cream cone (you can expand this)
-      [null,null,null,null,null,null,null,null,null,null,'#ffe6f2','#ffe6f2','#ffe6f2','#ffe6f2',null,null,null,null,null,null,null,null,null,null],
-      [null,null,null,null,null,null,null,null,null,'#ffe6f2','#ffb3d9','#ffb3d9','#ffb3d9','#ffb3d9','#ffe6f2',null,null,null,null,null,null,null,null,null],
-      [null,null,null,null,null,null,null,null,'#ffe6f2','#ffb3d9','#ff80c0','#ff80c0','#ff80c0','#ff80c0','#ffb3d9','#ffe6f2',null,null,null,null,null,null,null,null],
-      [null,null,null,null,null,null,null,'#ffe6f2','#ffb3d9','#ff80c0','#ff4da6','#ff4da6','#ff4da6','#ff4da6','#ff80c0','#ffb3d9','#ffe6f2',null,null,null,null,null,null,null],
-      [null,null,null,null,null,null,'#ffe6f2','#ffb3d9','#ff80c0','#ff4da6','#ff1a8c','#ff1a8c','#ff1a8c','#ff1a8c','#ff4da6','#ff80c0','#ffb3d9','#ffe6f2',null,null,null,null,null,null],
-      [null,null,null,null,null,'#ffe6f2','#ffb3d9','#ff80c0','#ff4da6','#ff1a8c','#e6005c','#e6005c','#e6005c','#e6005c','#ff1a8c','#ff4da6','#ff80c0','#ffb3d9','#ffe6f2',null,null,null,null,null],
-      [null,null,null,null,'#ffe6f2','#ffb3d9','#ff80c0','#ff4da6','#ff1a8c','#e6005c','#cc0052','#cc0052','#cc0052','#cc0052','#e6005c','#ff1a8c','#ff4da6','#ff80c0','#ffb3d9','#ffe6f2',null,null,null,null],
-      [null,null,null,'#ffe6f2','#ffb3d9','#ff80c0','#ff4da6','#ff1a8c','#e6005c','#cc0052','#b30047','#b30047','#b30047','#b30047','#cc0052','#e6005c','#ff1a8c','#ff4da6','#ff80c0','#ffb3d9','#ffe6f2',null,null,null],
-      [null,null,'#ffe6f2','#ffb3d9','#ff80c0','#ff4da6','#ff1a8c','#e6005c','#cc0052','#b30047','#99003d','#99003d','#99003d','#99003d','#b30047','#cc0052','#e6005c','#ff1a8c','#ff4da6','#ff80c0','#ffb3d9','#ffe6f2',null,null],
-      [null,'#ffe6f2','#ffb3d9','#ff80c0','#ff4da6','#ff1a8c','#e6005c','#cc0052','#b30047','#99003d','#800033','#800033','#800033','#800033','#99003d','#b30047','#cc0052','#e6005c','#ff1a8c','#ff4da6','#ff80c0','#ffb3d9','#ffe6f2',null],
-      ['#ffe6f2','#ffb3d9','#ff80c0','#ff4da6','#ff1a8c','#e6005c','#cc0052','#b30047','#99003d','#800033','#660029','#660029','#660029','#660029','#800033','#99003d','#b30047','#cc0052','#e6005c','#ff1a8c','#ff4da6','#ff80c0','#ffb3d9','#ffe6f2'],
-      [null,'#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6','#fff3e6',null],
-      [null,null,'#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3','#e6d1a3',null,null],
-      [null,null,null,'#d9b366','#d9b366','#d9b366','#d9b366','#d9b366','#d9b366','#d9b366','#d9b366','#d9b366','#d9b366','#d9b366','#d9b366','#d9b366','#d9b366','#d9b366','#d9b366','#d9b366','#d9b366',null,null,null],
-      [null,null,null,null,'#cc9933','#cc9933','#cc9933','#cc9933','#cc9933','#cc9933','#cc9933','#cc9933','#cc9933','#cc9933','#cc9933','#cc9933','#cc9933','#cc9933','#cc9933','#cc9933',null,null,null,null],
-      [null,null,null,null,null,'#b37400','#b37400','#b37400','#b37400','#b37400','#b37400','#b37400','#b37400','#b37400','#b37400','#b37400','#b37400','#b37400','#b37400',null,null,null,null,null],
-      [null,null,null,null,null,null,'#995c00','#995c00','#995c00','#995c00','#995c00','#995c00','#995c00','#995c00','#995c00','#995c00','#995c00','#995c00',null,null,null,null,null,null],
-      [null,null,null,null,null,null,null,'#804700','#804700','#804700','#804700','#804700','#804700','#804700','#804700','#804700','#804700',null,null,null,null,null,null,null],
-      [null,null,null,null,null,null,null,null,'#663300','#663300','#663300','#663300','#663300','#663300','#663300','#663300',null,null,null,null,null,null,null,null],
-      [null,null,null,null,null,null,null,null,null,'#4d2600','#4d2600','#4d2600','#4d2600','#4d2600','#4d2600',null,null,null,null,null,null,null,null,null],
-      [null,null,null,null,null,null,null,null,null,null,'#331a00','#331a00','#331a00','#331a00',null,null,null,null,null,null,null,null,null,null],
-      [null,null,null,null,null,null,null,null,null,null,null,'#1a0d00','#1a0d00',null,null,null,null,null,null,null,null,null,null,null],
+      // Rows 1-9: Empty (top of canvas)
       [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+      // Row 10 (index 9): Top scoop (Vanilla) - 5 pixels wide
+      [null,null,null,null,null,null,null,null,null,'#fffef7','#fffef7','#fffef7','#fffef7','#fffef7',null,null,null,null,null,null,null,null,null,null],
+      // Row 11 (index 10): Top scoop - 7 pixels wide
+      [null,null,null,null,null,null,null,null,'#fffef7','#fffef7','#fffef7','#fffef7','#fffef7','#fffef7','#fffef7',null,null,null,null,null,null,null,null,null],
+      // Row 12 (index 11): Top scoop - 9 pixels wide
+      [null,null,null,null,null,null,null,'#fffef7','#fffef7','#fffef7','#fffef7','#fffef7','#fffef7','#fffef7','#fffef7','#fffef7',null,null,null,null,null,null,null,null],
+      // Row 13 (index 12): Top scoop - 11 pixels wide
+      [null,null,null,null,null,null,'#fffef7','#fffef7','#fffef7','#fffef7','#fffef7','#fffef7','#fffef7','#fffef7','#fffef7','#fffef7','#fffef7',null,null,null,null,null,null,null],
+      // Row 14 (index 13): Top scoop bottom edge (darker) - 13 pixels wide + Strawberry scoop top - 9 pixels wide
+      [null,null,null,null,null,'#f0ead6','#f0ead6','#ffb3d1','#ffb3d1','#ffb3d1','#ffb3d1','#ffb3d1','#ffb3d1','#ffb3d1','#ffb3d1','#ffb3d1','#f0ead6','#f0ead6',null,null,null,null,null,null],
+      // Row 15 (index 14): Strawberry scoop - 11 pixels wide
+      [null,null,null,null,null,null,'#ffb3d1','#ffb3d1','#ffb3d1','#ffb3d1','#ffb3d1','#ffb3d1','#ffb3d1','#ffb3d1','#ffb3d1','#ffb3d1','#ffb3d1',null,null,null,null,null,null,null],
+      // Row 16 (index 15): Strawberry scoop bottom (darker) + Cone top - 13 pixels wide
+      [null,null,null,null,null,'#e699c2','#e699c2','#e699c2','#e699c2','#e699c2','#e699c2','#e699c2','#e699c2','#e699c2','#e699c2','#e699c2','#e699c2','#e699c2',null,null,null,null,null,null],
+      // Row 17 (index 16): Cone - 13 pixels wide with texture
+      [null,null,null,null,null,'#d4a574','#b8936b','#d4a574','#d4a574','#b8936b','#d4a574','#b8936b','#d4a574','#d4a574','#b8936b','#d4a574','#d4a574','#b8936b',null,null,null,null,null,null],
+      // Row 18 (index 17): Cone - 11 pixels wide with texture
+      [null,null,null,null,null,null,'#d4a574','#d4a574','#b8936b','#d4a574','#b8936b','#d4a574','#d4a574','#b8936b','#d4a574','#b8936b','#d4a574',null,null,null,null,null,null,null],
+      // Row 19 (index 18): Cone - 9 pixels wide with texture
+      [null,null,null,null,null,null,null,'#d4a574','#b8936b','#d4a574','#d4a574','#b8936b','#d4a574','#d4a574','#b8936b','#d4a574',null,null,null,null,null,null,null,null],
+      // Row 20 (index 19): Cone - 7 pixels wide with texture
+      [null,null,null,null,null,null,null,null,'#d4a574','#d4a574','#b8936b','#d4a574','#d4a574','#b8936b','#d4a574',null,null,null,null,null,null,null,null,null],
+      // Row 21 (index 20): Cone - 5 pixels wide with texture
+      [null,null,null,null,null,null,null,null,null,'#d4a574','#b8936b','#d4a574','#b8936b','#d4a574',null,null,null,null,null,null,null,null,null,null],
+      // Row 22 (index 21): Cone - 3 pixels wide
+      [null,null,null,null,null,null,null,null,null,null,'#d4a574','#d4a574','#d4a574',null,null,null,null,null,null,null,null,null,null,null],
+      // Row 23 (index 22): Cone - 1 pixel wide (tip)
+      [null,null,null,null,null,null,null,null,null,null,null,'#d4a574',null,null,null,null,null,null,null,null,null,null,null,null],
+      // Row 24 (index 23): Empty (bottom of canvas)
       [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
     ]
   }
