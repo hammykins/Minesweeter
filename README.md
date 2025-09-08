@@ -1,11 +1,27 @@
-# Minesweeter: Kawaii Candy & Sweets Theme
+# Minesweeter: Kawaii Candy & Sweets Theme 💗
 
-This is a web-based Minesweeper variant with a cute, candy-inspired theme. The game board uses pastel colors and placeholder icons for cupcakes, ice cream, and candy. The code is organized for easy extension and new game mechanisms.
+A web-based Minesweeper variant with a cute, candy-inspired theme featuring pastel colors and sweet emoji icons.
+
+![Minesweeter Gameplay](screenshots/gameplay.png)
+*Main game interface showing the kawaii candy theme with game legend and active gameplay*
 
 ## Features
-- Grid-based game board
-- Kawaii candy/sweets theme (pastel colors, cute icons)
-- Easy to extend for new mechanics
+- **Sweet Theme**: Candy 🍬, cupcake 🧁, and ice cream 🍦 icons instead of numbers
+- **Pastel Interface**: Soft pink and cream color palette
+- **Game Legend**: Clear visual guide for different mine count indicators
+- **Timer & Mine Counter**: Track your progress as you play
+- **Multiple Difficulty Levels**: Beginner (9x9), Intermediate (16x16), Advanced (24x24)
+- **Responsive Design**: Clean, accessible interface
+
+## Screenshots
+
+### Gameplay
+![Minesweeter Gameplay](screenshots/gameplay.png)
+*Main interface showing the sweet candy theme with mine counter, timer, and game legend*
+
+### Victory Screen
+![Victory Celebration](screenshots/victory.png)
+*Top 10 leaderboard entry screen where players can enter their 3-letter initials after winning*
 
 ## How to Run
 Just open `index.html` in your browser.

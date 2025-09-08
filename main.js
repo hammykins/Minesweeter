@@ -13,10 +13,6 @@ let gameOver = false;
 // Use an internal variable for leaderboard data to avoid collision with DOM id 'leaderboard'
 let leaderboardData = [];
 
-// For quick testing: when true the page will load with all safe cells revealed except one.
-// Toggle this to false or remove before finalizing.
-const AUTO_FILL_FOR_TESTING = true;
-
 // Dev/test helpers removed for finalization
 
 const DIFFICULTY_SETTINGS = {
@@ -506,27 +502,6 @@ window.onload = () => {
   const { size, mines } = DIFFICULTY_SETTINGS[difficulty];
   boardSize = size;
   numMines = mines;
-  if (AUTO_FILL_FOR_TESTING) {
-    // create a board with mines placed using a safe index near center
-    window.board = createBoard(Math.floor((boardSize*boardSize)/2));
-    // reveal all safe cells except one random safe cell to simulate last move
-    const safeIndices = [];
-    for (let i = 0; i < window.board.length; i++) {
-      if (window.board[i].active && !window.board[i].mine) safeIndices.push(i);
-    }
-    if (safeIndices.length > 1) {
-      // pick one to leave hidden
-      const leave = safeIndices[Math.floor(Math.random() * safeIndices.length)];
-      for (const idx of safeIndices) {
-        if (idx === leave) continue;
-        window.board[idx].revealed = true;
-      }
-      firstClick = false;
-      renderBoard(window.board);
-      console.log('AUTO_FILL_FOR_TESTING: left one safe cell hidden at index', leave);
-      return;
-    }
-  }
   window.board = createBoard();
   renderBoard(window.board);
 };
